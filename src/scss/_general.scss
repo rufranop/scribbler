@@ -10,6 +10,8 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     color: #2c3e50;
+    height: 100%;
+    width: 100%;
 }
 
 .app-container {
@@ -19,10 +21,13 @@ body {
     bottom: 0;
     left: 0;
     display: flex;
+    background: #fff;
+    transition: all ease-in-out 0.2s;
 
     .note-holder {
         width: 80%;
         padding: 20px;
+        transition: all ease-in-out 0.2s;
 
         textarea {
             display: block;
@@ -33,6 +38,7 @@ body {
             border: 0;
             padding: 0;
             font-family: 'PT Mono', monospace;
+            background: transparent;
         }
     }
 
@@ -43,12 +49,17 @@ body {
         height: 100%;
         width: 20%;
         border-left: 1px solid #e0e0e0;
+        transition: all ease-in-out 0.2s;
 
         h1 {
             font-size: 24px;
             line-height: 30px;
             font-weight: 600;
             margin-bottom: 20px;
+
+            span {
+                margin-right: 10px;
+            }
 
             sup {
                 font-size: 12px;
@@ -64,9 +75,47 @@ body {
             }
 
             a {
-                text-decoration: none;
-                color: lighten(#2c3e50, 10%);
-                font-style: italic;
+                color: inherit;
+                text-decoration: underline;
+            }
+        }
+
+        button {
+            background: none;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            line-height: 40px;
+            padding: 0 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin-top: 20px;
+        }
+    }
+
+    &.dark-mode {
+        background: #323639;
+
+        .note-holder {
+            textarea {
+                color: #f6f6f6;
+
+                &::placeholder {
+                    color: #f6f6f6;
+                }
+            }
+        }
+
+        .about {
+            background: #2b2c2d;
+            color: #f6f6f6;
+            border-left: 1px solid #545454;
+
+            p a {
+                color: #f6f6f6;
+            }
+
+            button {
+                border: 1px solid #f8f8f8;
+                color: #f6f6f6;
             }
         }
     }
@@ -74,7 +123,9 @@ body {
 
 @media (max-width: 600px) {
     .app-container {
+        position: static;
         flex-direction: column;
+        height: 100%;
 
         .note-holder {
             width: auto;
@@ -83,7 +134,7 @@ body {
 
         .about {
             width: auto;
-            height: 20%;
+            height: auto;
             border-top: 1px solid #e0e0e0;
             border-left: 0;
 
@@ -93,6 +144,13 @@ body {
 
             p + p {
                 margin-top: 10px;
+            }
+        }
+
+        &.dark-mode {
+            .about {
+                border-top: 1px solid #545454;
+                border-left: 0;
             }
         }
     }
