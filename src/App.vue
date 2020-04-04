@@ -56,7 +56,7 @@
                 this.darkMode = JSON.parse(localStorage.getItem('darkMode'));
             }
 
-            if (this.note === 'null' || this.note === null) {
+            if (this.note == null) {
                 this.note = ''
             }
 
